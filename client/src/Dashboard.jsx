@@ -5,18 +5,22 @@ import Lights from './pages/Dashboard/Lights.jsx'
 import Curtains from './pages/Dashboard/Curtains.jsx'
 import Security from './pages/Dashboard/Security.jsx'
 import Attendence from './pages/Dashboard/Attendence.jsx'
+import Sidebar from './components/Sidebar.jsx';
 
 
 const Dashboard = () => {
   return (
     <main>
-      <Routes>
-        <Route path='*' element={<Fans />} />
-        <Route path='/lights' element={<Lights />} />
-        <Route path='/curtains' element={<Curtains />} />
-        <Route path='/security' element={<Security />} />
-        <Route path='/attendence' element={<Attendence />} />
-      </Routes>
+      <Sidebar />
+      <section className="p-4 mt-14 sm:ml-64">
+        <Routes>
+          <Route path='/fans' element={<Fans />} />
+          <Route path='/lights' element={<Lights />} />
+          <Route path='/curtains' element={<Curtains />} />
+          <Route path='/security' element={<Security />} />
+          <Route path='/attendence' element={<Attendence />} />
+        </Routes>
+      </section>
     </main>
   )
 }
