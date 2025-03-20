@@ -1,6 +1,6 @@
 import React from 'react'
 
-const Table = () => {
+const Table = (name = "Kishore") => {
     return (
         <div>
             <div class="relative overflow-x-auto shadow-md sm:rounded-lg">

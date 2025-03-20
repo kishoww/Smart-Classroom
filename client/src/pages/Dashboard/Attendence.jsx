@@ -24,10 +24,6 @@ const Attendence = () => {
               <div>
                 <Table />
               </div>
-
-              <div>
-                <Table />
-              </div>
             </div>
 
           </div>
