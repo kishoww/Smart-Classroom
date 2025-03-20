@@ -1,9 +1,29 @@
-import React, { useState } from 'react'
 import Table from '../../components/Table'
+import React, { useState, useEffect } from "react";
+import { ref, get } from "firebase/database";
+import { db } from "../../config/firebase.config";
 
 const Attendence = () => {
 
   const [People, setPeople] = useState("0");
+
+  const setData = async () => {
+    try {
+      const snapshot = await get(ref(db, 'people/count'));
+      if (snapshot.exists()) {
+        setPeople(snapshot.val());  // Update state
+        console.log("Fetched Data:", snapshot.val()); // Log fetched data instead of old state
+      } else {
+        console.log("No data available");
+      }
+    } catch (error) {
+      console.error("Error fetching data:", error);
+    }
+  };
+
+  useEffect(() => {
+    setData();
+  }, [])
 
 
   return (
