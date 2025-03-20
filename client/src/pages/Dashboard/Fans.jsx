@@ -1,7 +1,27 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { ref, get } from "firebase/database";
+import { db } from "../../config/firebase.config";
 
 const Fans = () => {
   const [Fan, setFan] = useState("OFF");
+
+  const setData = async () => {
+    try {
+      const snapshot = await get(ref(db, 'fan'));
+      if (snapshot.exists()) {
+        setFan(snapshot.val());  // Update state
+        console.log("Fetched Data:", snapshot.val()); // Log fetched data instead of old state
+      } else {
+        console.log("No data available");
+      }
+    } catch (error) {
+      console.error("Error fetching data:", error);
+    }
+  };
+
+  useEffect(() => {
+    setData();
+  }, [])
 
   const color = Fan === "ON" ? "text-green-300" : "text-gray-400"; // Fix color for OFF state
 
