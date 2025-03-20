@@ -1,4 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { ref, onValue } from "firebase/database";
+import { db } from "../../config/firebase.config";
 
 const Security = () => {
   const [cameraStatus, setCameraStatus] = useState({
@@ -8,7 +10,24 @@ const Security = () => {
     cam4: "Detected",
   });
 
-  // Function to toggle camera status
+  // Fetch camera status from Firebase in real-time
+  useEffect(() => {
+    const camRef = ref(db, "cam");
+
+    const unsubscribe = onValue(camRef, (snapshot) => {
+      if (snapshot.exists()) {
+        setCameraStatus(snapshot.val());
+      } else {
+        console.log("No data available");
+      }
+    }, (error) => {
+      console.error("Error fetching data:", error);
+    });
+
+    return () => unsubscribe(); // Cleanup the listener on unmount
+  }, []);
+
+  // Toggle camera status (local state only)
   const toggleCamera = (cam) => {
     setCameraStatus((prevStatus) => ({
       ...prevStatus,
