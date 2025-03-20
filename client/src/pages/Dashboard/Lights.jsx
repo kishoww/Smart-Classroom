@@ -1,7 +1,9 @@
-import React, { useState } from "react";
+import { ref, get } from "firebase/database";
+import React, { useEffect, useState } from "react";
+import { db } from "../../config/firebase.config";
 
 const Lights = () => {
-  
+
   const [lights, setLights] = useState({
     light1: "ON",
     light2: "OFF",
@@ -12,6 +14,26 @@ const Lights = () => {
     lux3: "1000",
     lux4: "1000",
   });
+
+  const setData = async () => {
+    try {
+      const snapshot = await get(ref(db, 'lights'));
+      if (snapshot.exists()) {
+        setLights(snapshot.val());  // Update state
+        console.log("Fetched Data:", snapshot.val()); // Log fetched data instead of old state
+      } else {
+        console.log("No data available");
+      }
+    } catch (error) {
+      console.error("Error fetching data:", error);
+    }
+  };
+  
+
+
+  useEffect(() => {
+    setData();
+  }, [])
 
   const renderLight = (lightNumber) => {
     const isOn = lights[`light${lightNumber}`] === "ON";
