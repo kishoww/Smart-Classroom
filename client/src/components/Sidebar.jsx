@@ -14,7 +14,7 @@ const Sidebar = () => {
       <nav className="fixed top-0 z-50 w-full bg-white border-b border-gray-200 dark:bg-gray-800 dark:border-gray-700">
         <div className="px-3 py-3 lg:px-5 lg:pl-3">
           <div className="flex items-center justify-center">
-            <h1 className="text-xl sm:text-4xl text-white">Smart Classroom Dashboard</h1>
+            <h1 className="text-xl sm:text-4xl text-white">Solar Smart Classroom Dashboard</h1>
           </div>
         </div>
       </nav>
@@ -24,6 +24,19 @@ const Sidebar = () => {
         <div className="h-full px-3 pb-4 overflow-y-auto bg-white dark:bg-gray-800">
           <ul className="space-y-2 font-medium">
             {[
+               {
+                path: "/dashboard/security",
+                label: "Camera",
+                icon: (
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-cctv">
+                    <path d="M16.75 12h3.632a1 1 0 0 1 .894 1.447l-2.034 4.069a1 1 0 0 1-1.708.134l-2.124-2.97" />
+                    <path d="M17.106 9.053a1 1 0 0 1 .447 1.341l-3.106 6.211a1 1 0 0 1-1.342.447L3.61 12.3a2.92 2.92 0 0 1-1.3-3.91L3.69 5.6a2.92 2.92 0 0 1 3.92-1.3z" />
+                    <path d="M2 19h3.76a2 2 0 0 0 1.8-1.1L9 15" />
+                    <path d="M2 21v-4" />
+                    <path d="M7 9h.01" />
+                  </svg>
+                ),
+              },
               {
                 path: "/dashboard/lights",
                 label: "Lights",
@@ -57,19 +70,6 @@ const Sidebar = () => {
                     <path d="M8 15h12" />
                     <path d="M4 3v14" />
                     <circle cx="4" cy="19" r="2" />
-                  </svg>
-                ),
-              },
-              {
-                path: "/dashboard/security",
-                label: "Camera",
-                icon: (
-                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-cctv">
-                    <path d="M16.75 12h3.632a1 1 0 0 1 .894 1.447l-2.034 4.069a1 1 0 0 1-1.708.134l-2.124-2.97" />
-                    <path d="M17.106 9.053a1 1 0 0 1 .447 1.341l-3.106 6.211a1 1 0 0 1-1.342.447L3.61 12.3a2.92 2.92 0 0 1-1.3-3.91L3.69 5.6a2.92 2.92 0 0 1 3.92-1.3z" />
-                    <path d="M2 19h3.76a2 2 0 0 0 1.8-1.1L9 15" />
-                    <path d="M2 21v-4" />
-                    <path d="M7 9h.01" />
                   </svg>
                 ),
               },

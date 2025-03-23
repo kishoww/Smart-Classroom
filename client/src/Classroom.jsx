@@ -8,7 +8,7 @@ const Classroom = () => {
 
     const handleClick = (event) => {
         event.preventDefault(); // Prevent page reload
-        navigate("/dashboard/fans")
+        navigate("/dashboard/camera")
     }
 
     return (

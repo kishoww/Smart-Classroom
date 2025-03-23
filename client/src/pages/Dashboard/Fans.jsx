@@ -3,7 +3,10 @@ import { ref, get } from "firebase/database";
 import { db } from "../../config/firebase.config";
 
 const Fans = () => {
-  const [Fan, setFan] = useState("OFF");
+  const [Fan, setFan] = useState({
+    fan : "",
+    temperature : ""
+  });
 
   const setData = async () => {
     try {
@@ -29,7 +32,7 @@ const Fans = () => {
     <div className="">
       <div className="">
         <div className="grid grid-rows-5 gap-4 mb-4">
-          <div className="grid grid-cols-1 h-32 rounded-sm bg-gray-50 dark:bg-gray-800 text-white">
+          <div className="grid grid-cols-2 h-32 rounded-sm bg-gray-50 dark:bg-gray-800 text-white">
             <div className="flex justify-center gap-2 items-center">
               <h1 className={`font-style ${color}`}>
                 <svg
@@ -48,7 +51,13 @@ const Fans = () => {
                   <path d="M12 12v.01" />
                 </svg>
               </h1>
-              <h1 className="font-style">Fan : {Fan}</h1>
+              <h1 className="font-style">Fan : {Fan.fan}</h1>
+            </div>
+            <div className="flex justify-center gap-2 items-center">
+              <h1 className={`font-style ${color}`}>
+                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-thermometer"><path d="M14 4v10.54a4 4 0 1 1-4 0V4a2 2 0 0 1 4 0Z" /></svg>
+              </h1>
+              <h1 className="font-style">Temperature : {Fan.temperature}</h1>
             </div>
           </div>
         </div>
